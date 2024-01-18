@@ -1,0 +1,39 @@
+{% extends "employees/base.htm" %}
+{% load static %}
+
+
+{% block content %}
+
+    <div class="container d-flex justify-content-center align-items-center p-md-3">
+        
+        <form class="form card p-md-3" method="post" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <strong class="mb-md-3 text-secondary">Update your blog</strong>
+            <hr>
+            <div class="form-group pb-md-2">
+                <label for="title"><b>Title:</b></label>
+                <input type="text" value={{post.title}} class="form-control" id="title" name="title" placeholder="Enter title" required>
+            </div>
+            <div class="form-group pb-md-2">
+                <label for="posttype"><b>Post Type:</b></label>
+                <input type="text" value={{post.posttype}} class="form-control" id="posttype" name="posttype" placeholder="Enter post type" required>
+            </div>
+            <div class="form-group pb-md-2">
+                <label for="description"><b>Description:</b></label>
+                <input type="text" value={{post.description}} class="form-control" id="description" name="description" placeholder="Enter description" required>
+            </div>
+            <div class="form-group pb-md-2">
+                <label for="image"><b>Image:</b></label>
+                <input type="file" value={{post.image}} class="form-control-file" id="image" name="image" required>
+            </div>
+            <div class="form-group pb-md-2">
+                <label for="content"><b>Content:</b></label>
+                <textarea class="form-control" value={{post.content}} id="content" name="content" rows="4" placeholder="Enter content" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <a href="{% url 'employees:blog-page' %}" class="btn btn-primary">Back to Blog</a>
+        
+    </div>
+    
+{% endblock content %}
